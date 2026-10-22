@@ -20,10 +20,15 @@
       return Object.assign({}, DEFAULTS, r.settings || {});
     } catch (_) { return Object.assign({}, DEFAULTS); }
   }
-  async function set(patch) {
-    const next = Object.assign(await get(), patch);
-    try { await chrome.storage.local.set({ settings: next }); } catch (_) {}
-    return next;
+  // Writes are queued so rapid changes (sliders, quick clicks) never overwrite each other.
+  let queue = Promise.resolve();
+  function set(patch) {
+    queue = queue.then(async () => {
+      const next = Object.assign(await get(), patch);
+      try { await chrome.storage.local.set({ settings: next }); } catch (_) {}
+      return next;
+    });
+    return queue;
   }
   g.ClickphileSettings = { DEFAULTS, get, set };
 })(globalThis);

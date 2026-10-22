@@ -6,7 +6,7 @@
 
   function paint() {
     for (const k of toggles) $(k).checked = !!S[k];
-    document.querySelectorAll('.seg button').forEach((b) => b.classList.toggle('on', b.dataset.src === S.tileSource));
+    document.querySelectorAll('#srcRow .seg button').forEach((b) => b.classList.toggle('on', b.dataset.src === S.tileSource));
     $('srcRow').classList.toggle('disabled', !S.showTiles);
   }
   paint();
@@ -43,7 +43,7 @@
       paint();
     });
   }
-  document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', async () => {
+  document.querySelectorAll('#srcRow .seg button').forEach((b) => b.addEventListener('click', async () => {
     S = await ClickphileSettings.set({ tileSource: b.dataset.src });
     paint();
   }));

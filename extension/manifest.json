@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Clickphile",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Type with just your mouse. Right-click any text box for an on-screen keyboard, plus a calm new tab page. Fully offline, no tracking.",
   "permissions": ["activeTab", "scripting", "contextMenus", "search", "storage", "topSites", "bookmarks", "favicon"],
   "background": { "service_worker": "background.js" },
