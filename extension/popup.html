@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clickphile</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="" width="36" height="36">
+    <div>
+      <h1>Clickphile</h1>
+      <p>Type with just your mouse</p>
+    </div>
+  </header>
+
+  <button id="openHere" class="primary">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>
+    Open keyboard for focused box
+  </button>
+  <p id="hint" class="hint" hidden></p>
+
+  <section>
+    <h2>Everywhere</h2>
+    <label class="row"><span>Right-click menu<small>“Type with mouse” on text boxes</small></span>
+      <input type="checkbox" id="contextMenu"><i class="sw"></i></label>
+  </section>
+
+  <section>
+    <h2>New tab page</h2>
+    <label class="row"><span>On-screen keyboard</span><input type="checkbox" id="kbOnNewTab"><i class="sw"></i></label>
+    <label class="row"><span>Scenic background</span><input type="checkbox" id="scenic"><i class="sw"></i></label>
+    <label class="row"><span>Shortcut tiles</span><input type="checkbox" id="showTiles"><i class="sw"></i></label>
+    <div class="row seg-row" id="srcRow"><span>Tiles show</span>
+      <div class="seg"><button data-src="top">Top sites</button><button data-src="bookmarks">Bookmarks</button></div>
+    </div>
+  </section>
+
+  <details class="look">
+    <summary>Keyboard look</summary>
+
+    <div class="stage"><div id="prev" class="kprev">
+      <div class="prow"><b>q</b><b>w</b><b>e</b><b>r</b><b>t</b><b class="go">⏎</b></div>
+      <div class="prow"><b class="fn">⇧</b><b>a</b><b>s</b><b>d</b><b class="wide">space</b></div>
+    </div></div>
+
+    <div class="field"><span>Theme</span>
+      <div class="seg" id="themeSeg"><button data-theme="auto">Auto</button><button data-theme="dark">Dark</button><button data-theme="light">Light</button></div>
+    </div>
+
+    <div class="field"><span>Accent</span>
+      <div class="swatches" id="swatches">
+        <button data-c="#4f7cff" style="--c:#4f7cff" aria-label="Blue"></button>
+        <button data-c="#8a5cff" style="--c:#8a5cff" aria-label="Violet"></button>
+        <button data-c="#ff5c8a" style="--c:#ff5c8a" aria-label="Pink"></button>
+        <button data-c="#ff8a3d" style="--c:#ff8a3d" aria-label="Orange"></button>
+        <button data-c="#22c58b" style="--c:#22c58b" aria-label="Green"></button>
+        <button data-c="#14b8d4" style="--c:#14b8d4" aria-label="Cyan"></button>
+        <input type="color" id="accent" aria-label="Custom colour">
+      </div>
+    </div>
+
+    <label class="field"><span>Transparency</span><input type="range" id="kbOpacity" min="0.25" max="1" step="0.01"><output id="oOpacity"></output></label>
+    <label class="field"><span>Blur</span><input type="range" id="kbBlur" min="0" max="40" step="1"><output id="oBlur"></output></label>
+    <label class="field"><span>Corners</span><input type="range" id="kbRound" min="0" max="3" step="0.1"><output id="oRound"></output></label>
+
+    <button id="resetLook" class="ghost">Reset look</button>
+    <p class="note">Size: drag the corner grip on the keyboard itself.</p>
+  </details>
+
+  <a id="manage" class="link" href="#">Turn off Clickphile in Brave’s extensions page ↗</a>
+
+  <footer>
+    Made by <strong>Gitwingo</strong> ·
+    <a href="https://github.com/gitwingo/clickphile" target="_blank" rel="noopener">github.com/gitwingo/clickphile</a>
+  </footer>
+
+  <script src="settings.js"></script>
+  <script src="keyboard.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

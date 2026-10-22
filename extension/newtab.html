@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <div id="bg"></div>
+  <div id="shade"></div>
+
+  <main>
+    <p id="date"></p>
+    <h1 id="clock">--:--</h1>
+    <p id="greet"></p>
+
+    <form id="f" autocomplete="off">
+      <svg class="mag" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="text" spellcheck="false" placeholder="Search or enter a web address">
+      <button type="submit" id="go" aria-label="Go">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+
+    <section id="shortcuts" hidden>
+      <div class="chips" role="tablist">
+        <button type="button" class="chip" data-src="top">Top sites</button>
+        <button type="button" class="chip" data-src="bookmarks">Bookmarks</button>
+      </div>
+      <div id="tiles"></div>
+    </section>
+  </main>
+
+  <div class="corner">
+    <button type="button" id="kbToggle" title="Show or hide the on-screen keyboard" aria-label="Toggle keyboard">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>
+    </button>
+    <button type="button" id="newScene" title="New background" aria-label="New background">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5"/></svg>
+    </button>
+  </div>
+
+  <script src="settings.js"></script>
+  <script src="scenes.js"></script>
+  <script src="keyboard.js"></script>
+  <script src="newtab.js"></script>
+</body>
+</html>

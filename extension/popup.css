@@ -1,0 +1,98 @@
+:root {
+  --bg: #ffffff; --fg: #111827; --mute: #6b7280; --line: #e5e7eb; --card: #f5f6fa; --accent: #4f7cff; --off: #cbd0dc;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #151a2c; --fg: #f4f6ff; --mute: #98a1bd; --line: #262d47; --card: #1d2440; --off: #3a4263; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  width: 330px; padding: 16px; background: var(--bg); color: var(--fg);
+  font: 14px/1.35 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+header img { border-radius: 10px; }
+h1 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+header p { margin: 1px 0 0; font-size: 12.5px; color: var(--mute); }
+
+.primary {
+  all: unset; box-sizing: border-box; width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 11px 14px; border-radius: 12px; cursor: pointer; font-weight: 600; color: #fff;
+  background: linear-gradient(135deg, #4f7cff, #8a5cff); box-shadow: 0 6px 18px rgba(79, 124, 255, .35);
+  transition: transform .1s, filter .1s;
+}
+.primary:hover { filter: brightness(1.08); }
+.primary:active { transform: scale(.98); }
+.primary svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.hint { margin: 8px 2px 0; font-size: 12.5px; color: var(--mute); }
+
+section { margin-top: 16px; }
+h2 { margin: 0 0 6px 2px; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 12px;
+  background: var(--card); border-radius: 10px; margin-bottom: 6px; cursor: pointer;
+}
+.row small { display: block; color: var(--mute); font-size: 11.5px; }
+.row input { position: absolute; opacity: 0; pointer-events: none; }
+.sw { flex: none; position: relative; width: 38px; height: 22px; border-radius: 999px; background: var(--off); transition: background .15s; }
+.sw::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .15s;
+}
+.row input:checked + .sw { background: var(--accent); }
+.row input:checked + .sw::after { transform: translateX(16px); }
+.row input:focus-visible + .sw { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.seg-row { cursor: default; }
+.seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+.seg button {
+  all: unset; cursor: pointer; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--mute);
+}
+.seg button.on { background: var(--accent); color: #fff; }
+.row.disabled { opacity: .5; pointer-events: none; }
+
+.look { margin-top: 16px; background: var(--card); border-radius: 12px; padding: 4px 12px 12px; }
+.look summary { cursor: pointer; padding: 8px 0; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.look[open] summary { color: var(--fg); }
+.stage { margin: 4px 0 12px; padding: 18px 14px; border-radius: 10px; background: linear-gradient(135deg, #6a4c93, #f4a261 60%, #ffd6a5); }
+.kprev {
+  --u: 3px; --bg: rgba(255,255,255,.74); --key: rgba(255,255,255,.95); --fn: rgba(0,0,0,.06); --fg: #111827; --bd: rgba(0,0,0,.1);
+  --accent: #4f7cff; --blur: 22px; --rk: 1.5; padding: 8px; color: var(--fg); background: var(--bg);
+  -webkit-backdrop-filter: blur(var(--blur)); backdrop-filter: blur(var(--blur));
+  border-radius: calc(var(--u) * (var(--rk) + 1.1)); border: 1px solid var(--bd); box-shadow: 0 10px 26px rgba(0,0,0,.28);
+}
+.kprev.dark { --key: rgba(255,255,255,.1); --fn: rgba(255,255,255,.05); --fg: #f4f6ff; --bd: rgba(255,255,255,.14); }
+.prow { display: flex; gap: 5px; margin-bottom: 5px; }
+.prow:last-child { margin-bottom: 0; }
+.prow b {
+  flex: 1; height: 26px; display: grid; place-items: center; font-weight: 500; font-size: 12px;
+  background: var(--key); border: 1px solid var(--bd); border-radius: calc(var(--u) * var(--rk));
+}
+.prow b.fn { background: var(--fn); }
+.prow b.go { background: var(--accent); color: #fff; border-color: transparent; }
+.prow b.wide { flex: 3; }
+.field { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 7px 0; font-size: 13px; }
+.field > span { flex: none; width: 88px; }
+.field input[type=range] { flex: 1; min-width: 0; accent-color: var(--accent); }
+.field output { width: 34px; text-align: right; font-size: 12px; color: var(--mute); font-variant-numeric: tabular-nums; }
+.field .seg { background: var(--bg); }
+.swatches { display: flex; align-items: center; gap: 7px; flex: 1; justify-content: flex-end; }
+.swatches button {
+  all: unset; box-sizing: border-box; width: 20px; height: 20px; border-radius: 50%; background: var(--c); cursor: pointer;
+  border: 2px solid transparent; box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+}
+.swatches button.on { border-color: var(--bg); box-shadow: 0 0 0 2px var(--accent); }
+.swatches input[type=color] { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 50%; }
+.ghost {
+  all: unset; box-sizing: border-box; display: block; margin: 8px auto 0; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--line); font-size: 12px; font-weight: 600; color: var(--mute); cursor: pointer;
+}
+.ghost:hover { color: var(--fg); border-color: var(--mute); }
+.note { margin: 8px 0 0; text-align: center; font-size: 11.5px; color: var(--mute); }
+
+.link { display: block; margin: 12px 2px 0; font-size: 12.5px; color: var(--mute); text-decoration: none; }
+.link:hover { color: var(--accent); }
+footer { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); text-align: center; font-size: 12px; color: var(--mute); }
+footer a { color: var(--accent); text-decoration: none; word-break: break-all; }
+footer a:hover { text-decoration: underline; }
+footer strong { color: var(--fg); }
