@@ -13,7 +13,12 @@ Works in Chrome, Brave, Edge and other Chromium browsers. Fully offline: no trac
 - **Private by design:** the keyboard is injected only when you ask for it. See [PRIVACY.md](PRIVACY.md).
 
 ## Install
-**From the store:** _(link coming soon)_
+**From the store:**
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/clickphile/gnjgmkamojjbcpoipkggkbfpkhgpjffc">
+    <img src="https://img.shields.io/badge/Chrome_Web_Store-Install_Now-1a73e8?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Install from Chrome Web Store">
+  </a>
+</p>
 
 **From source (developer mode):**
 1. Download or clone this repo.
